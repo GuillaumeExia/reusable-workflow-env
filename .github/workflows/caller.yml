@@ -14,4 +14,4 @@ jobs:
     steps:
       - name: Read from Environment
         run: |
-          echo "File: ${{ needs.reusable_job.outputs.my_file }}"
+          echo "${{ needs.reusable_job.outputs.my_file }}"
