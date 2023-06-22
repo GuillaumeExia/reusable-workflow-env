@@ -14,4 +14,5 @@ jobs:
     steps:
       - name: Read from Environment
         run: |
-          echo "${{ needs.reusable_job.outputs.my_file }}"
+          my_file==$(echo "${{ needs.reusable_job.outputs.my_file }}" | tr '\n' '\\n')
+          echo "$my_file"
