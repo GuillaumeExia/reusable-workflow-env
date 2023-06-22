@@ -18,8 +18,10 @@ jobs:
       - name: Write to Environment
         id: get_file
         run: |
-          cat << 'EOF' > $KEY_FILE_NAME
-          GIT_ACCESS_TOKEN=abcdtoken
-          MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
-          EOF
+          #cat << 'EOF' > $KEY_FILE_NAME
+          #GIT_ACCESS_TOKEN=abcdtoken
+          #MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
+          #EOF
+          echo "GIT_ACCESS_TOKEN=abcdtoken" >> $KEY_FILE_NAME
+          echo "MAVEN_REPO_URL=https://example.com/repo/maven-snapshots" >> $KEY_FILE_NAME
           echo "my_file=$(cat $KEY_FILE_NAME)" >> $GITHUB_OUTPUT
