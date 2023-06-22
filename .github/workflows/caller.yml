@@ -1,0 +1,16 @@
+name: CallerWorkflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reusable_job:
+    name: Write to Environment
+    uses: ./.github/workflows/reusable.yml
+  
+  read_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read from Environment
+        run: |
+          echo "File Name: ${{ env.MY_FILE_NAME }}"

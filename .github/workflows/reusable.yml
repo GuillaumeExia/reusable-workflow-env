@@ -1,0 +1,15 @@
+name: ReusableWorkflow
+
+on:
+  workflow_call:
+
+env:
+  CSSP_KEY_FILE_NAME: 'myfile.properties'
+
+jobs:
+  write_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write to Environment
+        run: |
+          echo "MY_FILE_NAME=$GITHUB_WORKSPACE/$CSSP_KEY_FILE_NAME" >> $GITHUB_ENV
