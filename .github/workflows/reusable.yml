@@ -35,6 +35,8 @@ jobs:
           #echo "MAVEN_REPO_URL=https://example.com/repo/maven-snapshots" >> $KEY_FILE_NAME
           ##
           keyfile=$(<$KEY_FILE_NAME)
-          keyfile_flat=$(echo "$keyfile" | tr '\n' '\\n')
-          echo "$keyfile_flat"
+          #keyfile_flat=$(echo "$keyfile" | tr '\n' '\\n')
+          #echo "$keyfile_flat"
+          echo "${keyfile@Q}"
+          keyfile_flat="${keyfile@Q}"
           echo "my_file=$keyfile_flat" >> $GITHUB_OUTPUT

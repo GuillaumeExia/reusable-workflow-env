@@ -5,7 +5,7 @@ on:
 
 jobs:
   reusable_job:
-    name: Write to Environment
+    name: Get File Content
     uses: ./.github/workflows/reusable.yml
   
   read_env:
