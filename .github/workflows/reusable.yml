@@ -16,7 +16,7 @@ jobs:
     outputs:
       file: ${{ steps.get_file.outputs.my_file}}
     steps:
-      - name: Write to Environment
+      - name: Write to Output
         id: get_file
         run: |
           cat << 'EOF' > $KEY_FILE_NAME
@@ -36,4 +36,5 @@ jobs:
           ##
           keyfile=$(<$KEY_FILE_NAME)
           keyfile_flat=$(echo "$keyfile" | tr '\n' '\\n')
+          echo "$keyfile_flat"
           echo "my_file=$keyfile_flat" >> $GITHUB_OUTPUT
