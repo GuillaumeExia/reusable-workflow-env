@@ -2,14 +2,24 @@ name: ReusableWorkflow
 
 on:
   workflow_call:
+    outputs:
+      my_file:
+        value: ${{ jobs.write_env.outputs.file }}
 
 env:
-  CSSP_KEY_FILE_NAME: 'myfile.properties'
+  KEY_FILE_NAME: 'myfile.properties'
 
 jobs:
   write_env:
     runs-on: ubuntu-latest
+    outputs:
+      file: ${{ steps.get_file.outputs.my_file}}
     steps:
       - name: Write to Environment
+        id: get_file
         run: |
-          echo "MY_FILE_NAME=$GITHUB_WORKSPACE/$CSSP_KEY_FILE_NAME" >> $GITHUB_ENV
+          cat << 'EOF' > $KEY_FILE_NAME
+          GIT_ACCESS_TOKEN=abcdtoken
+          MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
+          EOF
+          echo "my_file=$(cat $KEY_FILE_NAME)" >> $GITHUB_OUTPUT

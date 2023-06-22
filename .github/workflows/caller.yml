@@ -10,7 +10,8 @@ jobs:
   
   read_env:
     runs-on: ubuntu-latest
+    needs: reusable_job
     steps:
       - name: Read from Environment
         run: |
-          echo "File Name: ${{ env.MY_FILE_NAME }}"
+          echo "File: ${{ needs.reusable_job.outputs.my_file }}"
