@@ -22,6 +22,11 @@ jobs:
           #GIT_ACCESS_TOKEN=abcdtoken
           #MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
           #EOF
-          echo "GIT_ACCESS_TOKEN=abcdtoken" >> $KEY_FILE_NAME
-          echo "MAVEN_REPO_URL=https://example.com/repo/maven-snapshots" >> $KEY_FILE_NAME
-          echo "my_file=$(cat $KEY_FILE_NAME)" >> $GITHUB_OUTPUT
+          KEY_FILE=$(cat <<EOF
+          GIT_ACCESS_TOKEN=abcdtoken
+          MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
+          EOF
+          )
+          #echo "GIT_ACCESS_TOKEN=abcdtoken" >> $KEY_FILE_NAME
+          #echo "MAVEN_REPO_URL=https://example.com/repo/maven-snapshots" >> $KEY_FILE_NAME
+          echo "my_file=$KEY_FILE" >> $GITHUB_OUTPUT
