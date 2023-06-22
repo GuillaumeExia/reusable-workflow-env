@@ -4,13 +4,14 @@ on:
   workflow_call:
     outputs:
       my_file:
-        value: ${{ jobs.write_env.outputs.file }}
+        value: ${{ jobs.write_output.outputs.file }}
 
 env:
   KEY_FILE_NAME: 'myfile.properties'
 
 jobs:
-  write_env:
+  write_output:
+    name: Write Output
     runs-on: ubuntu-latest
     outputs:
       file: ${{ steps.get_file.outputs.my_file}}

@@ -9,10 +9,11 @@ jobs:
     uses: ./.github/workflows/reusable.yml
   
   read_env:
+    name: Read Output
     runs-on: ubuntu-latest
     needs: reusable_job
     steps:
       - name: Read from Environment
         run: |
-          my_file==$(echo "${{ needs.reusable_job.outputs.my_file }}" | tr '\n' '\\n')
+          my_file=$(echo "${{ needs.reusable_job.outputs.my_file }}" | tr '\n' '\\n')
           echo "$my_file"
