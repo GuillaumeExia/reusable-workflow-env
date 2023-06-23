@@ -28,4 +28,4 @@ jobs:
           keyfile=$(<$KEY_FILE_NAME)
           echo "${keyfile//$'\n'/\\n}"
           keyfile_flat="${keyfile//$'\n'/\\n}"
-          echo "my_file=$keyfile_flat" >> $GITHUB_OUTPUT
+          echo "file=$keyfile_flat" >> $GITHUB_OUTPUT
