@@ -25,18 +25,7 @@ jobs:
           EOF
           cat $KEY_FILE_NAME
           ##
-          #KEY_FILE=$(cat <<EOF
-          #GIT_ACCESS_TOKEN=abcdtoken
-          #MAVEN_REPO_URL=https://example.com/repo/maven-snapshots
-          #EOF
-          #)
-          ##
-          #echo "GIT_ACCESS_TOKEN=abcdtoken" >> $KEY_FILE_NAME
-          #echo "MAVEN_REPO_URL=https://example.com/repo/maven-snapshots" >> $KEY_FILE_NAME
-          ##
           keyfile=$(<$KEY_FILE_NAME)
-          #keyfile_flat=$(echo "$keyfile" | tr '\n' '\\n')
-          #echo "$keyfile_flat"
-          echo "${keyfile@Q}"
-          keyfile_flat="${keyfile@Q}"
+          echo "${keyfile//$'\n'/\\n}"
+          keyfile_flat="${keyfile//$'\n'/\\n}"
           echo "my_file=$keyfile_flat" >> $GITHUB_OUTPUT
