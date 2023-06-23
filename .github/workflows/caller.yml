@@ -15,4 +15,5 @@ jobs:
     steps:
       - name: Read from Output
         run: |
+          my_file="${{ needs.reusable_job.outputs.my_file }}"
           echo -e "$my_file"
