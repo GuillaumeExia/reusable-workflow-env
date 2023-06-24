@@ -10,7 +10,7 @@ jobs:
   
   read_env:
     name: Read Output
-    runs-on: self-hosted
+    runs-on: test-label1
     needs: reusable_job
     steps:
       - name: Read from Output
