@@ -10,7 +10,7 @@ jobs:
   
   read_env:
     name: Read Output
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: reusable_job
     steps:
       - name: Read from Output
