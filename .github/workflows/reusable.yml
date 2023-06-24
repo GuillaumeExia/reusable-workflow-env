@@ -28,4 +28,5 @@ jobs:
           keyfile=$(<$KEY_FILE_NAME)
           echo "${keyfile//$'\n'/\\n}"
           keyfile_flat="${keyfile//$'\n'/\\n}"
+          echo "::add-mask::$keyfile_flat"
           echo "file=$keyfile_flat" >> $GITHUB_OUTPUT
