@@ -10,7 +10,7 @@ jobs:
   
   read_env:
     name: Read Output
-    runs-on: test-label1
+    runs-on: test-label2
     needs: reusable_job
     steps:
       - name: Read from Output
